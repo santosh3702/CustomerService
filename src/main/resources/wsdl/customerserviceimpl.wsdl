@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CustomerServiceImplService" targetNamespace="http://impl.service.customer.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.service.customer.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://impl.service.customer.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://impl.service.customer.com/" version="1.0">
+
+  <xs:element name="addCustomer" type="tns:addCustomer"/>
+
+  <xs:element name="addCustomerResponse" type="tns:addCustomerResponse"/>
+
+  <xs:element name="deleteCustomerId" type="tns:deleteCustomerId"/>
+
+  <xs:element name="deleteCustomerIdResponse" type="tns:deleteCustomerIdResponse"/>
+
+  <xs:element name="getCustomerId" type="tns:getCustomerId"/>
+
+  <xs:element name="getCustomerIdResponse" type="tns:getCustomerIdResponse"/>
+
+  <xs:element name="modifyCustomer" type="tns:modifyCustomer"/>
+
+  <xs:element name="modifyCustomerResponse" type="tns:modifyCustomerResponse"/>
+
+  <xs:complexType name="addCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="tns:address"/>
+      <xs:element minOccurs="0" name="contactNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+      <xs:element minOccurs="0" name="ordersDetails" type="tns:ordersDetails"/>
+      <xs:element minOccurs="0" name="fName" type="xs:string"/>
+      <xs:element minOccurs="0" name="sName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addressLine1" type="xs:string"/>
+      <xs:element minOccurs="0" name="addressLine2" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="state" type="xs:string"/>
+      <xs:element minOccurs="0" name="zipcode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ordersDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_Id" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="itemsList" nillable="true" type="tns:items"/>
+      <xs:element minOccurs="0" name="o_Id" type="xs:string"/>
+      <xs:element minOccurs="0" name="payment" type="tns:payment"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="items">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="xs:string"/>
+      <xs:element minOccurs="0" name="price" type="xs:string"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addCustomerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modifyCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modifyCustomerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteCustomerId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteCustomerIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCustomerId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCustomerIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="gender">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Male"/>
+      <xs:enumeration value="Female"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="payment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cash_On_Delivery"/>
+      <xs:enumeration value="Debit_Card"/>
+      <xs:enumeration value="Credit_Card"/>
+      <xs:enumeration value="PayTm"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addCustomer">
+    <wsdl:part name="parameters" element="tns:addCustomer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyCustomer">
+    <wsdl:part name="parameters" element="tns:modifyCustomer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerIdResponse">
+    <wsdl:part name="parameters" element="tns:deleteCustomerIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCustomerResponse">
+    <wsdl:part name="parameters" element="tns:addCustomerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerIdResponse">
+    <wsdl:part name="parameters" element="tns:getCustomerIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyCustomerResponse">
+    <wsdl:part name="parameters" element="tns:modifyCustomerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerId">
+    <wsdl:part name="parameters" element="tns:deleteCustomerId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerId">
+    <wsdl:part name="parameters" element="tns:getCustomerId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerServiceImpl">
+    <wsdl:operation name="addCustomer">
+      <wsdl:input name="addCustomer" message="tns:addCustomer">
+    </wsdl:input>
+      <wsdl:output name="addCustomerResponse" message="tns:addCustomerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyCustomer">
+      <wsdl:input name="modifyCustomer" message="tns:modifyCustomer">
+    </wsdl:input>
+      <wsdl:output name="modifyCustomerResponse" message="tns:modifyCustomerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomerId">
+      <wsdl:input name="deleteCustomerId" message="tns:deleteCustomerId">
+    </wsdl:input>
+      <wsdl:output name="deleteCustomerIdResponse" message="tns:deleteCustomerIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerId">
+      <wsdl:input name="getCustomerId" message="tns:getCustomerId">
+    </wsdl:input>
+      <wsdl:output name="getCustomerIdResponse" message="tns:getCustomerIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerServiceImplServiceSoapBinding" type="tns:CustomerServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifyCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomerId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteCustomerId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteCustomerIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCustomerId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomerIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerServiceImplService">
+    <wsdl:port name="CustomerServiceImplPort" binding="tns:CustomerServiceImplServiceSoapBinding">
+      <soap:address location="http://localhost:9090/CustomerServiceImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
